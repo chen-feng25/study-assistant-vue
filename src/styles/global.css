@@ -1,1 +1,32 @@
-/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-top: #f8faf7; --bg-mid: #f3f7f0; --bg-end: #f8faf7;
+  --card-bg: rgba(255, 255, 255, 0.85); --card-border: #d8e6d0;
+  --accent: #6a9a40; --accent-light: #8ab860;
+  --title: #3a4a2a; --text: #4a5a3a; --muted: #8a9a7a;
+  --line: #b0c8a0; --shadow: rgba(100, 140, 80, 0.06);
+  --sidebar-start: #3d4a3a; --sidebar-mid: #4a5746;
+  --sidebar-text: #c8e0c0; --sidebar-dim: rgba(200, 224, 192, 0.5);
+  --sidebar-active: #d8f0d0;
+  --tea: #789848; --matcha: #8ab860;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Outfit', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-top); color: var(--text); }
+#app { min-height: 100vh; }
+.serif { font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif; }
+
+@keyframes heroUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cardUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes sidebarIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes navSlide { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes lineStretch { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes pageIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.page-enter-active { animation: pageIn 0.35s ease-out; }
+.page-leave-active { animation: pageIn 0.2s ease-in reverse; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #c0d8b0; border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
