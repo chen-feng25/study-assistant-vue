@@ -30,7 +30,8 @@ async function send() {
   input.value = ''
   loading.value = true; error.value = ''
   try {
-    const data = await api.chat(msg, messages.value.slice(0, -1))
+    const uid = +sessionStorage.getItem('userId') || 0
+    const data = await api.chat(msg, messages.value.slice(0, -1), uid)
     messages.value.push({ role: 'ai', content: data.reply || '抱歉，没有回复' })
   } catch (e) { error.value = e.message } finally { loading.value = false }
 }
@@ -49,4 +50,8 @@ async function send() {
 .btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(106,154,64,0.25); }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .err { color: #d04040; font-size: 0.78rem; padding: 6px 12px; }
+
+@media (max-width: 767px) {
+  .chat-msg { max-width: 90%; }
+}
 </style>

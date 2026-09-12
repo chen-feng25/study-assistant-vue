@@ -39,8 +39,8 @@ async function submit() {
     const fn = mode.value === 'login' ? api.login : api.register
     const data = await fn(username.value, password.value)
     if (data.ok) {
-      localStorage.setItem('userId', data.user_id)
-      localStorage.setItem('username', data.username || username.value)
+      sessionStorage.setItem('userId', data.user_id)
+      sessionStorage.setItem('username', data.username || username.value)
       router.push('/entry')
     } else {
       error.value = data.error || '操作失败'
@@ -50,7 +50,7 @@ async function submit() {
 </script>
 
 <style scoped>
-.login-page { display: flex; align-items: center; justify-content: center; flex: 1; position: relative; z-index: 1; }
+.login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; position: relative; z-index: 1; }
 .login-card { background: var(--card-bg); border-radius: 14px; padding: 34px 28px; border: 1px solid var(--card-border); width: 340px; text-align: center; box-shadow: 0 4px 24px var(--shadow); animation: heroUp 0.6s ease-out; }
 .login-card h1 { font-size: 1.3rem; color: var(--title); margin: 10px 0 20px; }
 .form-input { padding: 10px 14px; border-radius: 8px; border: 1.5px solid #d8e6d0; background: white; font-size: 0.82rem; color: var(--text); outline: none; font-family: inherit; width: 100%; margin-bottom: 10px; transition: border-color 0.25s; display: block; box-sizing: border-box; }
@@ -61,4 +61,8 @@ async function submit() {
 .login-error { color: #d04040; font-size: 0.78rem; margin-top: 10px; }
 .link-text { font-size: 0.72rem; color: var(--muted); margin-top: 14px; cursor: pointer; }
 .link-text:hover { color: var(--tea); }
+
+@media (max-width: 767px) {
+  .login-card { width: 100%; max-width: 340px; padding: 28px 22px; }
+}
 </style>

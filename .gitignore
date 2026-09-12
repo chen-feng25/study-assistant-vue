@@ -1,4 +1,24 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+dist/
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+.env.local
 *.local
+
+# Database (contains personal learning data — never commit)
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.pyc
+
+# Tooling
+.claude/
