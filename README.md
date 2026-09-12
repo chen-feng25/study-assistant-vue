@@ -81,6 +81,12 @@ npm run build      # 生产构建，产物输出到 dist/（由 server.py 直接
 
 > 该文件已被 `.gitignore` 忽略，不会被提交到版本库。
 
+## ⚠️ 安全说明
+
+本项目设计为**本地 / 单用户**使用。当前认证仅校验用户名密码，登录后由前端保存 `user_id`，后端各接口直接信任客户端传入的 `user_id`，**没有服务端会话 / Token 校验**。
+
+因此请勿直接将服务暴露到公网；如需多人或公网部署，请自行补充真正的鉴权（如 JWT / Session）。
+
 ## 📁 项目结构
 
 ```
@@ -88,7 +94,6 @@ study-assistant-vue/
 ├── server.py          # FastAPI 后端入口
 ├── ai_service.py      # DeepSeek AI 调用封装
 ├── database.py        # SQLite 数据访问层
-├── analysis.py        # 数据分析
 ├── requirements.txt   # Python 依赖
 ├── start.sh           # Linux / macOS 启动脚本
 ├── 启动.bat           # Windows 启动脚本
